@@ -1,25 +1,28 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector<char> vec;
+        std::vector<char> vec;
         vec.resize(s.size());
         vec.assign(s.begin(), s.end());
+        std::map<char,int> sMap;
         int result = 0;
-        set<char> cSet;
+        // 将第一个值加入map,并移除第一个值
+        // 遍历剩余的字符,查看字符是否存在，存在则记录此次字符长度
+        // 之后清空map,重新从第一个值开始查找
         while (vec.size() > 0)
         {
-            cSet.clear();
-            cSet.insert(vec[0]);
-            vector<char>::iterator k = vec.begin();
+            sMap.clear();
+            sMap[vec[0]] = 1;
+            std::vector<char>::iterator k = vec.begin();
             vec.erase(k);
             for (int i = 0; i < vec.size(); i++){
-                if (cSet.find(vec[i]) != cSet.end()){
+                if (sMap[vec[i]] != NULL){
                     break;
                 }
-                cSet.insert(vec[i]);
+                sMap[vec[i]] = 1;
             }
-            if (result < cSet.size()){
-                result = cSet.size();
+            if (result < sMap.size()){
+                result = sMap.size();
             }
             if (result > vec.size()){
                 break;
