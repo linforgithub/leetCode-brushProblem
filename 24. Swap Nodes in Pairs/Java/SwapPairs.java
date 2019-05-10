@@ -16,12 +16,12 @@ class Solution {
         if(node == null || node.next == null) {
             return node;
         }
-        ListNode  temp = node.next;
-        node.next = temp.next;
-        temp.next = node;
+        ListNode  tmp = node.next;
+        node.next = tmp.next;
+        tmp.next = node;
         if (node.next != null){
             node.next = swapTwoNode(node.next);
         }
-        return temp;
+        return tmp;
     }
 }
