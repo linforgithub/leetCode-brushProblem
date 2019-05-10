@@ -10,14 +10,14 @@ class Solution {
         int l ,r;
         List<Integer> group;
         Set<List<Integer>> set = new HashSet<>();
-        int temp;
+        int tmp;
         for(int i = 0; i < nums.length - 3;i++){
             for(int j = i + 1;j < nums.length - 2;j++){
                 l = j + 1;
                 r = nums.length - 1;
                 while (l < r){
-                    temp = nums[i] + nums[j] + nums[l] + nums[r];
-                    if(temp == target) {
+                    tmp = nums[i] + nums[j] + nums[l] + nums[r];
+                    if(tmp == target) {
                         group = new ArrayList<>();
                         group.add(nums[i]);
                         group.add(nums[j]);
@@ -26,7 +26,7 @@ class Solution {
                         set.add(group);
                         l++;
                         r--;
-                    }else if(temp > target){
+                    }else if(tmp > target){
                         r--;
                     }else{
                         l++;
