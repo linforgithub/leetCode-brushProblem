@@ -13,13 +13,13 @@ class Solution {
         }
         int index = 0;
         ListNode nowParent = head;
-        ListNode temp = head.next;
-        while(temp != null){
+        ListNode tmp = head.next;
+        while(tmp != null){
             if(index >= n){
                 nowParent = nowParent.next;
             }
             index++;
-            temp = temp.next;
+            tmp = tmp.next;
         }
         if(nowParent != null && index >= n){
             nowParent.next = nowParent.next.next;
